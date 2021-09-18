@@ -1,20 +1,19 @@
 require 'date'
-
-# █████████████████████████
-# █ ███ █     █  ████  ████
-# █ ███ ███ ███  ████  ████
-# █ █ █ ███ ███  ████  ████
-# █ █ █ ███ ███  ████  ████
-# █     █     █     █     █
-# █████████████████████████
+# ░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░██░███░██░███░█░█░███░░
+# ░░█░░█░█░█░░░█░░█░█░█░░░░
+# ░░█░░█░█░█░░░█░░█░█░███░░
+# ░░█░░███░█░░░█░░█░█░░░█░░
+# ░░██░█░█░██░░█░░███░███░░
+# ░░░░░░░░░░░░░░░░░░░░░░░░░
 
 PATTERN = <<-EOF.split("\n").map{|line| line.split(//)}.transpose.map(&:join).join
 XXXXXXXXXXXXXXXXXXXXXXXXX
-X XXX X     X  XXXX  XXXX
-X XXX XXX XXX  XXXX  XXXX
-X X X XXX XXX  XXXX  XXXX
-X X X XXX XXX  XXXX  XXXX
-X     X     X     X     X
+X   X   X   X   X X X   X
+X XXX X X XXXX XX X X XXX
+X XXX X X XXXX XX X X   X
+X XXX   X XXXX XX X XXX X
+X   X X X   XX XX   X   X
 XXXXXXXXXXXXXXXXXXXXXXXXX
 EOF
 
@@ -50,4 +49,3 @@ commit_dates.each do |date|
   File.open('random_list_of_dates', 'w') { |f| f << str_commit_dates.shuffle.first(12).join("\n") }
   `GIT_AUTHOR_DATE="#{date}" GIT_COMMITTER_DATE="#{date}" git commit -am "#{date}"`
 end
-
